@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--导入base.html的样式资源-->
+    <div th:replace="base :: #base"></div>
+
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css" th:href="@{/css/bootstrap-datepicker.min.css}">
+</head>
+<body>
+<!--导入head top -->
+<div id="head_top">
+    <div id="top"></div>
+    <div class="header-one">
+        <div class="headertop-wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="span5 clearfix">
+                        <div class="lang pull-right">
+                            <span>选择一种语言:<a href="#">中文</a></span>
+                        </div>
+                    </div>
+                    <div class="span4 srch">
+                        <form>
+                            <input type="submit" value="">
+                            <input type="text" name="search" placeholder="查询">
+                        </form>
+                    </div>
+                    <div class="span3">
+                        <div class="social-nav">
+                            <a href="#" class="facebook "></a>
+                            <a href="#" class="twitter"></a>
+                            <a href="#" class="google"></a>
+                            <a href="#" class="rss"></a>
+                        </div>
+                        <a href="#" class="sign-in" id="login-link">登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER -->
+    <div class="header-wrapper header_two">
+        <div class="container">
+            <div class="row">
+
+                <!-- Logo -->
+                <div class="span4">
+                    <div class="logo"> <!--138x96-->
+                        <a th:href="@{index.html}"><img th:src="@{/images/company/logo.jpg}" alt="Logo"></a>
+                    </div>
+                </div>
+                <!-- Logo -->
+
+                <!--top Menu -->
+                <div class="span8">
+                    <div class="top-menu">
+                        <ul>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="#">新闻</a></li>
+                            <li><a href="#">娱乐</a></li>
+                            <li><a href="#">媒体</a></li>
+                            <li><a href="#" class="last">帮助</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--top Menu -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 主要的目录 -->
+<div class="nav-wrapper nav-two">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <!--引用导航条-->
+                <div th:replace="base :: #nav"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Slider -->
+<div class="flexslider slider_two">
+
+    <!--背景景点设计-->
+    <div th:replace="base :: #background"></div>
+
+
+    <!-- Reservation box -->
+    <div id="slider_tabs">
+        <ul class="clearfix">
+            <li><a href="#tabs-1" class="one">飞机</a></li>
+            <li><a href="#tabs-2" class="two">酒店</a></li>
+            <li><a href="#tabs-3" class="three">汽车</a></li>
+            <li><a href="#tabs-4" class="four">假期</a></li>
+        </ul>
+        <div id="tabs-1" class="tab clearfix">
+            <div class="detail">
+                <form action="#" method="post">
+                    <div class="trip">
+                        <input type="radio" name="trip" value="Round-trip"><span>Roud-Trip</span>
+                        <input type="radio" name="trip" value="onw-way"><span>One-way</span>
+                    </div>
+
+                    <div class="location clearfix">
+                        <div class="pull-left">
+                            <label>Your Locatıon</label>
+                            <input type="text" name="Location" value="England">
+                        </div>
+                        <div class="pull-right">
+                            <label class="dst">Destination</label>
+                            <input type="text" name="Destination" value="Turkey">
+                        </div>
+                    </div>
+
+                    <div class="location clearfix">
+
+                        <div class="pull-left">
+                            <div class="date clearfix">
+                                <div class="Depart-Date">
+                                    <label>Depart Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="datepicker">
+                                </div>
+                                <div>
+                                    <label>Return Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="clender">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div class="persons">
+                                <div class="ad">
+                                    <label>Adults</label>
+                                    <input type="text" name="Location" value="1" id="spinner">
+                                </div>
+                                <div class="ad">
+                                    <label>Children</label>
+                                    <input type="text" name="Location" value="1" id="spinner-two">
+                                </div>
+                                <div>
+                                    <label>Senior</label>
+                                    <input type="text" name="Location" value="1" id="spinner-three">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search">
+                        <input type="submit" name="search" value="SEARCH">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="tabs-2" class="tab clearfix">
+            <div class="detail">
+                <form action="#" method="post">
+                    <div class="trip">
+                        <input type="radio" name="trip" value="Round-trip"><span>Roud-Trip</span>
+                        <input type="radio" name="trip" value="onw-way"><span>One-way</span>
+                    </div>
+
+                    <div class="location clearfix">
+                        <div class="pull-left">
+                            <label>Your Locatıon</label>
+                            <input type="text" name="Location" value="England">
+                        </div>
+                        <div class="pull-right">
+                            <label class="dst">Destination</label>
+                            <input type="text" name="Destination" value="Turkey">
+                        </div>
+                    </div>
+
+                    <div class="location clearfix">
+
+                        <div class="pull-left">
+                            <div class="date clearfix">
+                                <div class="Depart-Date">
+                                    <label>Depart Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="datepicker">
+                                </div>
+                                <div>
+                                    <label>Return Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="clender">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div class="persons">
+                                <div class="ad">
+                                    <label>Adults</label>
+                                    <input type="text" name="Location" value="1" id="spinner">
+                                </div>
+                                <div class="ad">
+                                    <label>Children</label>
+                                    <input type="text" name="Location" value="1" id="spinner-two">
+                                </div>
+                                <div>
+                                    <label>Senior</label>
+                                    <input type="text" name="Location" value="1" id="spinner-three">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search">
+                        <input type="submit" name="search" value="SEARCH">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="tabs-3" class="tab clearfix">
+            <div class="detail">
+                <form action="#" method="post">
+                    <div class="trip">
+                        <input type="radio" name="trip" value="Round-trip"><span>Roud-Trip</span>
+                        <input type="radio" name="trip" value="onw-way"><span>One-way</span>
+                    </div>
+
+                    <div class="location clearfix">
+                        <div class="pull-left">
+                            <label>Your Locatıon</label>
+                            <input type="input" name="Location" value="England">
+                        </div>
+                        <div class="pull-right">
+                            <label class="dst">Destination</label>
+                            <input type="text" name="Destination" value="Turkey">
+                        </div>
+                    </div>
+
+                    <div class="location clearfix">
+
+                        <div class="pull-left">
+                            <div class="date clearfix">
+                                <div class="Depart-Date">
+                                    <label>Depart Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="datepicker">
+                                </div>
+                                <div>
+                                    <label>Return Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="clender">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div class="persons">
+                                <div class="ad">
+                                    <label>Adults</label>
+                                    <input type="text" name="Location" value="1" id="spinner">
+                                </div>
+                                <div class="ad">
+                                    <label>Children</label>
+                                    <input type="text" name="Location" value="1" id="spinner-two">
+                                </div>
+                                <div>
+                                    <label>Senior</label>
+                                    <input type="text" name="Location" value="1" id="spinner-three">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search">
+                        <input type="submit" name="search" value="SEARCH">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="tabs-4" class="tab clearfix">
+            <div class="detail">
+                <form action="#" method="post">
+                    <div class="trip">
+                        <input type="radio" name="trip" value="Round-trip"><span>Roud-Trip</span>
+                        <input type="radio" name="trip" value="onw-way"><span>One-way</span>
+                    </div>
+
+                    <div class="location clearfix">
+                        <div class="pull-left">
+                            <label>Your Locatıon</label>
+                            <input type="text" name="Location" value="England">
+                        </div>
+                        <div class="pull-right">
+                            <label class="dst">Destination</label>
+                            <input type="text" name="Destination" value="Turkey">
+                        </div>
+                    </div>
+
+                    <div class="location clearfix">
+
+                        <div class="pull-left">
+                            <div class="date clearfix">
+                                <div class="Depart-Date">
+                                    <label>Depart Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="datepicker">
+                                </div>
+                                <div>
+                                    <label>Return Date</label>
+                                    <input type="text" name="Location" value="30.01.2013" id="clender">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div class="persons">
+                                <div class="ad">
+                                    <label>Adults</label>
+                                    <input type="text" name="Location" value="1" id="spinner">
+                                </div>
+                                <div class="ad">
+                                    <label>Children</label>
+                                    <input type="text" name="Location" value="1" id="spinner-two">
+                                </div>
+                                <div>
+                                    <label>Senior</label>
+                                    <input type="text" name="Location" value="1" id="spinner-three">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search">
+                        <input type="submit" name="search" value="SEARCH">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 导入热门推荐 notification-->
+<!--热门推荐-->
+<div th:replace="base :: #Recommend"></div>
+<!--一条横线-->
+
+<div class="row" style="margin-left:50px;">
+    <div class="span12">
+        <div class="heading">
+            <h2>热门 <span>推荐</span></h2>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-left:10px;">
+    <!--video Section -->
+    <!--宣传片-->
+    <div class="span6">
+        <div class="video">
+            <!--还没有解决自动播放的问题-->
+            <iframe src="//releases.flowplayer.org/5.4.1/flowplayer.swf" th:src="@{/video/11.mp4}" width="100%"
+                    height="345px" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true"
+                    allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <!--这里可以用数据库的数据-->
+    <div class="span3">
+        <div class="hotdeal">
+            <div class="deal-header">
+                <h3>热门 酒店</h3>
+            </div>
+
+            <div id="vcarousel">
+                <ul>
+                    <li>
+                        <!--69x56像素的照片-->
+                        <figure class="pull-left"><img src="images/hotdeal-pic.png" th:src="@{/images/hotel/jinhe.jpg}"
+                                                       alt="金鹤大酒店"></figure>
+                        <article class=" clearfix">
+                            <div class="hot pull-left">
+                                <p>金鹤大酒店</p>
+                                <p class="star">
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                </p>
+                            </div>
+                            <div class="price pull-right">
+                                <h3>381</h3>
+                                <span>一 天</span>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <figure class="pull-left"><img src="images/hotdeal-pic.png"
+                                                       th:src="@{/images/hotel/shengxian.jpg}" alt="圣贤大酒店"></figure>
+                        <article class=" clearfix">
+                            <div class="hot pull-left">
+                                <p>圣贤大酒店</p>
+                                <p class="star">
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                </p>
+                            </div>
+                            <div class="price pull-right">
+                                <h3>181</h3>
+                                <span>一 天</span>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <figure class="pull-left"><img src="images/hotdeal-pic.png" th:src="@{/images/hotel/minzu.jpg}"
+                                                       alt="民族大酒店"></figure>
+                        <article class=" clearfix">
+                            <div class="hot pull-left">
+                                <p>民族大酒店</p>
+                                <p class="star">
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                </p>
+                            </div>
+                            <div class="price pull-right">
+                                <h3>251</h3>
+                                <span>一 天</span>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <figure class="pull-left"><img src="images/hotdeal-pic.png"
+                                                       th:src="@{/images/hotel/xianggelila.jpg}" alt="香格里拉大酒店"></figure>
+                        <article class=" clearfix">
+                            <div class="hot pull-left">
+                                <p>香格里拉大酒店</p>
+                                <p class="star">
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#" class="active"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                </p>
+                            </div>
+                            <div class="price pull-right">
+                                <h3>291</h3>
+                                <span>一 天</span>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <a href="" class="d-down"></a>
+                <a href="" class="d-up"></a>
+            </div>
+        </div>
+    </div>
+    <!--通知-->
+    <div class="span3 notify">
+        <div class="slider">
+            <div class="slides">
+                <a href="#"><img src="http://placehold.it/270x302" th:src="@{/images/scenic/xuliya.jpg}" alt="叙利亚开战了"/></a>
+            </div>
+            <div class="slides">
+                <a href="#"><img src="http://placehold.it/270x302" th:src="@{/images/scenic/zhangjiajie.jpg}"
+                                 alt="张家界的游客超过10亿"/></a>
+            </div>
+            <div class="slides">
+                <a href="#"><img src="http://placehold.it/270x302" th:src="@{/images/scenic/luofushan.jpg}"
+                                 alt="罗浮山游客超过8千万"/></a>
+            </div>
+        </div>
+        <div class="text">
+            <h5>新闻</h5>
+            <a href="#" class="left"></a>
+            <a href="#" class="right"></a>
+        </div>
+    </div>
+</div>
+
+
+<!-- 公司的一些信息 -->
+<div class="footer-widget-wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="span3 f-widget copy-right">
+                <a href="#" class="f-logo"><img src="images/logo2.png" alt="Logo"></a>
+                <p>© 2013 <a href="#">N-Travel</a>. All rights reserved</p>
+                <p>Designed by Kavin</p>
+            </div>
+            <div class="span3 f-widget">
+                <h4>Company Infomation</h4>
+                <ul>
+                    <li><a href="#">About US</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Booking Tips</a></li>
+                    <li><a href="#">Payment Option</a></li>
+                    <li class="last"><a href="#">Infomation</a></li>
+                </ul>
+            </div>
+            <div class="span3 f-widget">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">About US</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Booking Tips</a></li>
+                    <li><a href="#">Payment Option</a></li>
+                    <li class="last"><a href="#">Infomation</a></li>
+                </ul>
+            </div>
+            <div class="span3 f-widget">
+                <div class="cc">
+                    <h4>Customer Support</h4>
+                    <h2>1-669-559-4378</h2>
+                    <span class="pull-right">Support 24/24</span>
+                </div>
+                <div class="f-widget n-letter">
+                    <h4>Newsletter</h4>
+
+                    <form>
+                        <input type="text" name="newlatter" value="Enter your email...">
+                        <input type="submit" name="submite-newslatter" value="Send">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--登录-->
+<div th:replace="index :: #sign"></div>
+<!-- Scripts 导入js的样式 -->
+<div th:replace="base :: #script"></div>
+<script src="/js/bootstrap-datepicker.min.js" th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+</body>
+</html>

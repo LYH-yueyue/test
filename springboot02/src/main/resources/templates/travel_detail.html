@@ -1,0 +1,516 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+<head>
+    <!--导入base.html的样式资源-->
+    <div th:replace="base :: #base"></div>
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css" th:href="@{/css/bootstrap-datepicker.min.css}">
+</head>
+<body>
+<!-- HEADER TOP -->
+
+<div th:replace="base :: #head_top"></div>
+
+<!-- HEADER IOP -->
+
+
+<!-- HEADER -->
+<div class="nav-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <!--引用导航条-->
+                <div th:replace="base :: #nav"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HEADER -->
+
+<!-- 目录 -->
+<div class="crum-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <a th:href="@{/hello/index}">主页</a>
+                <span class="crum">酒店</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 目录-->
+
+
+<!-- Grid page 表格页 -->
+<div class="content trave_detail">
+    <div class="container" th:each="hotel : ${session.hotel} " th:if="${session.hotel != null}">
+        <div class="row">
+            <div class="span3" id="sidebar">
+                <div class="widget checking_form clearfix">
+                    <form action="跳转到支付页面" method="post" class="clearfixc">
+                        <!--酒店的基本信息-->
+                        <div class="check_detail">
+                            <h4>[[${hotel.hotelName}]]</h4>
+                            <h5>酒店等级:</h5>
+                            <div class="stars">
+                                <a href="#" class="active" th:class="active" th:if="${hotel.getHotelRank()>0}"></a>
+                                <a href="#" class="active" th:class="active" th:if="${hotel.getHotelRank()-1>0}"></a>
+                                <a href="#" class="active" th:class="active" th:if="${hotel.getHotelRank()-2>0}"></a>
+                                <a href="#" th:class="active" th:if="${hotel.getHotelRank()-3>0}"></a>
+                                <a href="#" th:class="active" th:if="${hotel.getHotelRank()-4>0}"></a>
+                            </div>
+                        </div>
+                        <!--酒店订房间的日期-->
+                        <div class="location clearfix">
+                            <div class="pull-left clearfix">
+                                <div class="clearfix">
+                                    <div>
+                                        <label>入住时间</label>
+                                        <input type="date" id="start"
+                                               th:value="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd')}">
+                                    </div>
+                                    <div>
+                                        <label>离开时间</label>
+                                        <input type="date" id="end"
+                                               th:value="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd')}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div th:each="roomtype : ${session.roomtypes}" th:if="${session.roomtypes != null}">
+                                <div style="margin-bottom: 5px;">
+                                    <input name="price" class="price" type="radio" th:value="${roomtype.roomtypePrice}"
+                                           style="margin-top:0px;margin-left:5px;width: 15px;">
+                                    <span style="margin-top: 8px;"><strong style="font-size: 15px;">[[${roomtype.roomType}]]</strong>余:[[${roomtype.roomtypeResidue}]]</span>
+                                    <span style="margin-left: 50px;">[[${roomtype.roomtypePrice}]]$</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <p class="clearfix">预支付 <span id="qian">0$</span></p>
+                        <div class="search">
+                            <input type="submit" name="search" value="购买">
+                        </div>
+                    </form>
+                </div>
+                <!--选择类别-->
+                <div id="widget_accordion">
+                    <h3> 选择类别 <a href="#"></a></h3>
+                    <div class="widget">
+                        <div class="scrollbar1">
+                            <!--滚轮-->
+                            <div class="scrollbar">
+                                <div class="track">
+                                    <div class="thumb">
+                                        <div class="end"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--视图-->
+                            <div class="viewport">
+                                <div class="overview">
+                                    <div class="deals clearfix" th:each="roomtype : ${session.roomtypes}"
+                                         th:if="${session.roomtypes != null}">
+                                        <figure class="pull-left">
+                                            <img th:src="@{'/images/hotel/young/'+${roomtype.roomtypePic}}"
+                                                 src="images/hotdeal-pic.png" alt="${roomtype.roomType}">
+                                        </figure>
+                                        <article class="pull-left clearfix">
+                                            <div class="hot">
+                                                <p>[[${roomtype.roomType}]]</p>
+                                                <p class="stars">
+                                                    <a href="#" class="blue_star" th:class="blue_star"
+                                                       th:if="${roomtype.roomtypeRank-60>=0}"></a>
+                                                    <a href="#" class="blue_star" th:class="blue_star"
+                                                       th:if="${roomtype.roomtypeRank-70>=0}"></a>
+                                                    <a href="#" class="blue_star" th:class="blue_star"
+                                                       th:if="${roomtype.roomtypeRank-80>=0}"></a>
+                                                    <a href="#" th:class="blue_star"
+                                                       th:if="${roomtype.roomtypeRank-90>=0}"></a>
+                                                    <a href="#" th:class="blue_star"
+                                                       th:if="${roomtype.roomtypeRank-100>=0}"></a>
+                                                </p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>帮助<a href="#"></a></h3>
+                    <div class="widget">
+                        <p>如有疑问请拨打下面热线:</p>
+                        <p class="call">1-669-559-4378</p>
+                    </div>
+
+                </div>
+            </div>
+            <!--酒店的推荐房间照片-->
+            <div class="span9 right_content">
+                <div class="carousel_wrap">
+                    <!--大的图片-->
+                    <div id="carousel-wrapper">
+                        <div id="carousel_two" class="cool-carousel">
+
+                                            <span id="image1" th:id="'image'+${stat.index+1}"
+                                                  th:each="roomtype, stat : ${session.roomtypes}"
+                                                  th:if="${session.roomtypes != null}">
+                                                <img th:src="@{'/images/hotel/old/'+${roomtype.roomtypePic}}"
+                                                     src="http://placehold.it/840x311" alt="${roomtype.roomType"/>
+                                            </span>
+
+                        </div>
+                        <a href="#" class="prev"><span
+                                style="color:#1E9FFF;font-size: 100px; margin-left: 16px;"><</span></a>
+                        <a href="#" class="next"><span
+                                style="color:#1E9FFF;font-size: 100px; margin-left: -20px;">></span></a>
+                    </div>
+                    <!--小的图片-->
+                    <div class="carousal-bottom">
+                        <div id="thumbs-wrapper">
+                            <div id="thumbs">
+                                <a href="#image1" class="selected" th:href="'#image'+${stat.index+1}"
+                                   th:each="roomtype, stat : ${session.roomtypes}" th:if="${session.roomtypes != null}">
+                                    <img th:src="@{'/images/hotel/young/'+${roomtype.roomtypePic}}"
+                                         src="http://placehold.it/840x311" alt="${roomtype.roomType"/>
+                                    <!--<img th:src="@{'/images/hotel/young/'+${roomtype.roomtypePic}}" src="http://placehold.it/840x311" alt=${roomtype.roomType"/>-->
+                                </a>
+                            </div>
+                            <a id="prev" href="#"></a>
+                            <a id="next" href="#"></a>
+                        </div>
+                    </div>
+
+                    <span class="border"></span>
+                </div>
+
+                <div id="tabs_two">
+                    <ul class="clearfix">
+                        <li><a href="#tabs-1" class="one">酒店概述</a></li>
+                        <li><a href="#tabs-2" class="three">位置</a></li>
+                        <li><a href="#tabs-3" class="four">评论</a></li>
+                    </ul>
+
+                    <div id="tabs-1" class="tab clearfix">
+                        <div class="detail clearfix">
+                            <p>[[${session.hotel.hotelMsg}]]</p>
+                            <p>[[${session.hotel.hotelMsg}]]</p>
+                            <h2>房间设施</h2>
+                            <ul>
+                                <li>餐厅</li>
+                                <li>免费Wi-Fi</li>
+                                <li>网络</li>
+                                <li>停车场</li>
+                            </ul>
+
+                            <ul>
+                                <li>餐厅</li>
+                                <li>免费Wi-Fi</li>
+                                <li>网络</li>
+                                <li>停车场</li>
+                            </ul>
+
+                            <ul>
+                                <li>餐厅</li>
+                                <li>免费Wi-Fi</li>
+                                <li>网络</li>
+                                <li>停车场</li>
+                            </ul>
+
+                            <ul>
+                                <li>餐厅</li>
+                                <li>免费Wi-Fi</li>
+                                <li>网络</li>
+                                <li>停车场</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--酒店介绍的视频-->
+                    <div id="tabs-2" class="tab clearfix">
+                        <div class="detail">
+                            <div class="map">
+                                <iframe width="100%" height="360" frameborder="0" scrolling="no" marginheight="0"
+                                        marginwidth="0" object-fit="fill" autostart="true"
+                                        src="http://vd4.bdstatic.com/mda-jib64qc07iknc4mj/mda-jib64qc07iknc4mj.mp4"
+                                        th:src="@{/video/hotel_video.mp4}" alt="加载超时！！！">
+                                </iframe>
+                            </div>
+
+                            <h2>Hotel Location</h2>
+                            <p>Feugiat consequat augue pulvinar fusce quis dui diam leo dictumst, fringilla quisque
+                                nulla nec blandit lectus aenean lobortis ultrices, fames dolor accumsan ultrices
+                                eleifend convallis himenaeos etiam.</p>
+                        </div>
+                    </div>
+
+                    <div id="tabs-3" class="tab clearfix">
+                        <div class="detail">
+
+                            <div class="row">
+                                <!--用户打分-->
+                                <div class="span4 our_rating" id="score">
+                                    <h2>你的评分</h2>
+                                    <ul>
+                                        <li class="first">打扫</li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="star"></a></li>
+                                    </ul>
+
+                                    <ul>
+                                        <li class="first">克隆</li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="star"></a></li>
+                                    </ul>
+
+                                    <ul>
+                                        <li class="first">工作人员</li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="star"></a></li>
+                                    </ul>
+
+                                    <ul>
+                                        <li class="first">服务</li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="star"></a></li>
+                                    </ul>
+
+                                    <ul class="last">
+                                        <li class="first">舒服</li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="blue_star"></a></li>
+                                        <li><a href="javascript:void(0)" class="star"></a></li>
+                                    </ul>
+                                    <p style="font-size: 30px;">酒店的评分:[[${session.hotel.hotelScore}]]/100</span></p>
+                                </div>
+
+                                <!--评论-->
+                                <div class="span4">
+                                    <div class="hotdeal">
+                                        <div class="deal-header">
+                                            <h3>评论</h3>
+                                        </div>
+
+                                        <div id="vcarousel">
+                                            <ul>
+                                                <li th:each="comment : ${session.hotel.comments}">
+                                                    <article class=" clearfix">
+                                                        <div class="hot pull-left">
+                                                            <h5>评论人[暂时还没关联]</h5>
+                                                            <span>[[${comment.commentDate}]]</span>
+                                                            <p>[[${comment.comment_msg}]]</p>
+                                                        </div>
+                                                    </article>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="" class="d-down"></a>
+                                            <a href="" class="d-up"></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Grid page -->
+
+
+<!-- Footer widget -->
+<div class="footer-widget-wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="span3 f-widget copy-right">
+                <a href="#" class="f-logo"><img src="images/footer-logo.png" alt="Logo"></a>
+                <p>© 2013 <a href="#">N-Travel</a>. All rights reserved</p>
+                <p>Designed by Kavin</p>
+            </div>
+            <div class="span3 f-widget">
+                <h4>Company Infomation</h4>
+                <ul>
+                    <li><a href="#">About US</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Booking Tips</a></li>
+                    <li><a href="#">Payment Option</a></li>
+                    <li class="last"><a href="#">Infomation</a></li>
+                </ul>
+            </div>
+            <div class="span3 f-widget">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">About US</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Booking Tips</a></li>
+                    <li><a href="#">Payment Option</a></li>
+                    <li class="last"><a href="#">Infomation</a></li>
+                </ul>
+            </div>
+            <div class="span3 f-widget">
+                <div class="cc">
+                    <h4>Customer Support</h4>
+                    <h2>1-669-559-4378</h2>
+                    <span class="pull-right">Support 24/24</span>
+                </div>
+                <div class="f-widget n-letter">
+                    <h4>Newsletter</h4>
+
+                    <form>
+                        <input type="text" name="newlatter" value="Enter your email...">
+                        <input type="submit" name="submite-newslatter" value="Send">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Footer widget -->
+
+<!-- Footer -->
+<div class="footer-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+
+                <footer>
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="#">About US</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Serbice</a></li>
+                            <li><a href="#">Recruiment </a></li>
+                            <li><a href="#">Media</a></li>
+                            <li>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+                                - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="javascript:void(0)" onClick="goToByScroll('top')" class="gotop"></a>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+
+<div class="login-popup-wrapper">
+    <div id="login-popup">
+        <h2>login Panel</h2>
+        <form method="get" action="#">
+            <input type="text" value="" id="username" placeholder="kavinhieu@gmail.com"/>
+            <input type="text" value="" id="password" placeholder="Password"/>
+
+            <input type="submit" value="sıgn ın" id="login-button"/>
+        </form>
+        <a href="#" class="close">Close</a>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Scripts 导入js的样式 -->
+<div th:replace="base :: #script"></div>
+<script src="/js/bootstrap-datepicker.min.js" th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+<script>
+    //处理时间的
+    window.onload = function () {
+        var dayCount = 1;
+        $("input[name=price]").click(function () {
+            //var roomprice = document.getElementsByName("price");
+            document.getElementById("qian").innerText = dayCount * this.value + "$";
+        });
+
+        $("#end").change(function () {
+            var date1 = document.getElementById("start").value;
+            var y1 = (date1 || "").split("-")[0];
+            var m1 = (date1 || "").split("-")[1];
+            var d1 = (date1 || "").split("-")[2];
+            var time1 = new Date(y1, m1, d1);
+            //alert(date1);
+            var date2 = this.value;
+            //alert(date2);
+            var y2 = (date2 || "").split("-")[0];
+            var m2 = (date2 || "").split("-")[1];
+            var d2 = (date2 || "").split("-")[2];
+            var time2 = new Date(y2, m2, d2);
+            dayCount = (time2 - time1) / 1000 / 60 / 60 / 24;
+            //alert(dayCount)
+            var prices = document.getElementsByName("price");
+            for (var i = 0; i < prices.length; i++) {
+                if (prices[i].checked) {
+                    var price = prices[i].value;
+                }
+            }
+            //alert(price);
+            var Count = price * dayCount;
+            //alert(Count);
+            document.getElementById("qian").innerText = Count + "$";
+        });
+    }
+    //初始化支付的金额
+    (function () {
+        var roomprice = document.getElementsByName("price");
+        for (var i = 0; i < roomprice.length; i++) {
+            document.getElementById("qian").innerText = roomprice.value + "$";
+        }
+    })
+    //评分的js代码
+    $("#score ul li a").click(function () {
+        // for (var i = this; i != null ; ) {
+        //     alert(this.innerText);
+        //     i=i.parentNode.previousSibling;
+        //     this.style.class="blue_star";
+        // }
+        var Nodes = this.parentElement.parentElement.children;
+        for (var i = 1; i < Nodes.length; i++) {
+
+            for (var j = 0; j < Nodes[i].children.length; j++) {
+                if (Nodes[i].children[j].nodeType == '1') {
+                    //Nodes[i].children[j].innerHTML;
+                    Nodes[i].children[j].setAttribute("class", "blue_star");
+                }
+
+            }
+            //Nodes[i].lastChild.valueOf();
+
+            if (this.parentNode == Nodes[i]) {
+                for (var j = i + 1; j < Nodes.length; j++) {
+                    for (var k = 0; k < Nodes[j].children.length; k++) {
+                        if (Nodes[j].children[k].nodeType == '1') {//判断是不是一个标签类型
+                            Nodes[j].children[k].setAttribute("class", " ");
+                        }
+                    }
+
+                }
+                break;
+            }
+        }
+
+
+    });
+</script>
+</body>
+</html>

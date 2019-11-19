@@ -1,0 +1,243 @@
+<!doctype html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--导入base.html的样式资源-->
+    <div th:replace="base :: #base"></div>
+
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css" th:href="@{/css/bootstrap-datepicker.min.css}">
+    <script src="../static/js/jquery.min.js"></script>
+</head>
+<body>
+<!-- HEADER TOP -->
+<div th:replace="base :: #head_top"></div>
+<!-- HEADER IOP -->
+
+
+<!-- HEADER -->
+<div class="nav-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <!--引用导航条-->
+                <div th:replace="base :: #nav"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HEADER -->
+
+<!-- Crum -->
+<div class="crum-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <a href="">主页</a>
+                <span class="crum">列表页面</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Crum-->
+
+
+<!-- Grid page -->
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <!--酒店内容-->
+            <div class="span9 right_content">
+                <div class="row">
+                    <div class="portfolio-nav span9 clearfix">
+                        <strong>筛选:</strong>
+                        <ul class="option-set clearfix">
+                            <li><a th:href="@{/hotel/find}">默认</a></li>
+                            <li><a th:href="@{/hotel/find/hotelVisits}">人气度 </a></li>
+                            <li><a th:href="@{/hotel/find/hotelNormalPrice}">价格</a></li>
+                            <li><a th:href="@{/hotel/find/hotelRank}">星星</a></li>
+                            <li><a th:href="@{/hotel/find/hotelScore}">评分</a></li>
+                        </ul>
+
+                        <div class="grid_btn clearfix" style="width: 100px;">
+                            <!--表格模式-->
+                            <a href="travel_grid.html" class="grid active"></a>
+                            <!--列表模式-->
+                            <a href="travel_list.html" class="list"></a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <span class="border "></span>
+                    </div>
+                </div>
+                <div th:fragment="hotels" id="hotels">
+                    <div th:each="hotel, hotelStat : ${session.hotels}">
+                        <div class="row travel_lest" id="project-container">
+                            <div class="span12 offer element branding">
+                                <!--图片区261x162-->
+                                <figure>
+                                    <img style="height: 217px;"
+                                         th:src="@{'/images/hotel/travel_list/'+${hotel.hotelPic}}" alt="天门山照片">
+                                    <div class="overlay">
+                                        <a href="#" class="like"></a>
+                                    </div>
+                                </figure>
+                                <article style="height: 207px;margin-left: -5px;">
+                                    <h3>[[${hotel.hotelAddress}]]</h3>
+                                    <h4>[[${hotel.hotelName}]]</h4>
+                                    <div>
+                                        <p style="margin-bottom: 20px;">
+                                            <a href="#" class="active" th:class="active"
+                                               th:if="${hotel.getHotelRank()>0}"></a>
+                                            <a href="#" class="active" th:class="active"
+                                               th:if="${hotel.getHotelRank()-1>0}"></a>
+                                            <a href="#" class="active" th:class="active"
+                                               th:if="${hotel.getHotelRank()-2>0}"></a>
+                                            <a href="#" th:class="active" th:if="${hotel.getHotelRank()-3>0}"></a>
+                                            <a href="#" th:class="active" th:if="${hotel.getHotelRank()-4>0}"></a>
+                                        </p>
+                                        <span>
+                                                    <a href="#">
+                                                        阅读<strong>&nbsp;[[${hotel.commentCount}]]</strong>&nbsp;条评论,可以修改的
+                                                        <!--[[${hotel.comments}]]-->
+                                                    </a>
+                                                </span>
+                                    </div>
+
+                                    <h5>
+                                        <strong>[[${hotel.hotelName}]]酒店的评分:</strong><span>[[${hotel.hotelScore}]]分</span>
+                                    </h5>
+                                    <h5><strong>访问量:</strong><span>[[${hotel.hotelVisits}]]人访问</span></h5>
+                                    <p>[[${hotel.hotelMsg}]]</p>
+                                </article>
+                                <div class="price" style="height: 214px;width: 189px;">
+                                    <h3>[[${hotel.hotelNormalPrice}]]元/晚</h3>
+                                    <a th:href="'/hotel/'+${hotel.hotelName}+'/'+${hotel.id}"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--下边的边框-->
+                <span class="border"></span>
+                <!--显示数量-->
+                <div class="pagination clearfix">
+                    <p>页面:<a href="#">[[${session.page_index+1}]]</a><a href="#">/[[${session.totalPage}]]</a></p>
+                    <div class="errows">
+                        <a href="/hotel/page?flag=1" id="pre" class="left_errow"></a>
+                        <a href="/hotel/page?flag=2" id="nex" class="right_errow"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Grid page -->
+
+
+<!-- Footer widget -->
+<div class="footer-widget-wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="span3 f-widget copy-right">
+                <a href="#" class="f-logo"><img src="images/footer-logo.png" alt="Logo"></a>
+                <p>© 2013 <a href="#">N-Travel</a>. All rights reserved</p>
+                <p>Designed by Kavin</p>
+            </div>
+            <div class="span3 f-widget">
+                <h4>Company Infomation</h4>
+                <ul>
+                    <li><a href="#">About US</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Booking Tips</a></li>
+                    <li><a href="#">Payment Option</a></li>
+                    <li class="last"><a href="#">Infomation</a></li>
+                </ul>
+            </div>
+            <div class="span3 f-widget">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">About US</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Booking Tips</a></li>
+                    <li><a href="#">Payment Option</a></li>
+                    <li class="last"><a href="#">Infomation</a></li>
+                </ul>
+            </div>
+            <div class="span3 f-widget">
+                <div class="cc">
+                    <h4>Customer Support</h4>
+                    <h2>1-669-559-4378</h2>
+                    <span class="pull-right">Support 24/24</span>
+                </div>
+                <div class="f-widget n-letter">
+                    <h4>Newsletter</h4>
+
+                    <form>
+                        <input type="text" name="newlatter" value="Enter your email...">
+                        <input type="submit" name="submite-newslatter" value="Send">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Footer widget -->
+
+<!-- Footer -->
+<div class="footer-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+
+                <footer>
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="#">About US</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Serbice</a></li>
+                            <li><a href="#">Recruiment </a></li>
+                            <li><a href="#">Media</a></li>
+                            <li>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+                                - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="javascript:void(0)" onClick="goToByScroll('top')" class="gotop"></a>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+
+<div class="login-popup-wrapper">
+    <div id="login-popup">
+        <h2>login Panel</h2>
+        <form method="get" action="#">
+            <input type="text" value="" id="username" placeholder="kavinhieu@gmail.com"/>
+            <input type="text" value="" id="password" placeholder="Password"/>
+
+            <input type="submit" value="sıgn ın" id="login-button"/>
+        </form>
+        <a href="#" class="close">Close</a>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Scripts 导入js的样式 -->
+<div th:replace="base :: #script"></div>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script src="/js/bootstrap-datepicker.min.js" th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+<!--<script>-->
+<!--$("#pre").click(function () {-->
+<!--var url = "/hotel/find?flag = 1";-->
+<!--#("#hotels").load(url);-->
+<!--});-->
+<!--</script>-->
+
+</body>
+</html>

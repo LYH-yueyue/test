@@ -1,0 +1,170 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--导入base.html的样式资源-->
+    <div th:replace="base :: #base"></div>
+</head>
+<div>
+    <!--导入head top -->
+    <div th:replace="base :: #head_top"></div>
+
+
+    <!-- 主要的目录 -->
+    <div class="nav-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <!--引用导航条-->
+                    <div th:replace="base :: #nav"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slider 酒店，火车，飞机，汽车票的购买功能 -->
+    <div class="flexslider">
+        <!--背景景点设计-->
+        <div th:replace="base :: #background"></div>
+        <!--买票-->
+        <div th:replace="base :: #accordion"></div>
+    </div>
+    <div class="specialoffer-wrapper">
+        <!--热门推荐-->
+        <div th:replace="base :: #Recommend"></div>
+        <!--一条横线-->
+        <div class="row" style="margin-left:50px;">
+            <div class="span12">
+                <div class="heading">
+                    <h2>热门 <span>推荐</span></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:50px;">
+            <!--video Section -->
+            <!--宣传片-->
+            <div class="span6">
+                <div class="video">
+                    <!--还没有解决自动播放的问题-->
+                    <iframe src="//releases.flowplayer.org/5.4.1/flowplayer.swf" th:src="@{/video/11.mp4}" width="100%"
+                            height="345px" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true"
+                            allowfullscreen="true"></iframe>
+                </div>
+            </div>
+            <!--video Section -->
+
+
+            <!--这里可以用数据库的数据-->
+            <div class="span6">
+                <div class="hotdeal">
+                    <div class="deal-header">
+                        <h3>热门 酒店</h3>
+                    </div>
+
+                    <div id="vcarousel">
+                        <ul>
+                            <li>
+                                <!--69x56像素的照片-->
+                                <figure class="pull-left"><img src="images/hotdeal-pic.png"
+                                                               th:src="@{/images/hotel/jinhe.jpg}" alt="金鹤大酒店"></figure>
+                                <article class=" clearfix">
+                                    <div class="hot pull-left">
+                                        <p>金鹤大酒店</p>
+                                        <p class="star">
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </p>
+                                    </div>
+                                    <div class="price pull-right">
+                                        <h3>381</h3>
+                                        <span>一 天</span>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <figure class="pull-left"><img src="images/hotdeal-pic.png"
+                                                               th:src="@{/images/hotel/shengxian.jpg}" alt="圣贤大酒店">
+                                </figure>
+                                <article class=" clearfix">
+                                    <div class="hot pull-left">
+                                        <p>圣贤大酒店</p>
+                                        <p class="star">
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </p>
+                                    </div>
+                                    <div class="price pull-right">
+                                        <h3>181</h3>
+                                        <span>一 天</span>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <figure class="pull-left"><img src="images/hotdeal-pic.png"
+                                                               th:src="@{/images/hotel/minzu.jpg}" alt="民族大酒店"></figure>
+                                <article class=" clearfix">
+                                    <div class="hot pull-left">
+                                        <p>民族大酒店</p>
+                                        <p class="star">
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </p>
+                                    </div>
+                                    <div class="price pull-right">
+                                        <h3>251</h3>
+                                        <span>一 天</span>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <figure class="pull-left"><img src="images/hotdeal-pic.png"
+                                                               th:src="@{/images/hotel/xianggelila.jpg}" alt="香格里拉大酒店">
+                                </figure>
+                                <article class=" clearfix">
+                                    <div class="hot pull-left">
+                                        <p>香格里拉大酒店</p>
+                                        <p class="star">
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#" class="active"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </p>
+                                    </div>
+                                    <div class="price pull-right">
+                                        <h3>291</h3>
+                                        <span>一 天</span>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pull-right">
+                        <a href="" class="d-down"></a>
+                        <a href="" class="d-up"></a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--登录-->
+    <div th:replace="index :: #sign"></div>
+
+    <!-- Scripts 导入js的样式 -->
+    <div th:replace="base :: #script"></div>
+</div>
+</body>
+</html>

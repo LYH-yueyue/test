@@ -1,0 +1,485 @@
+<!doctype html >
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div id="base">
+        <!-- META TAGS -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width"/>
+
+        <!-- 网页的名称 -->
+        <title>旅游管理网站</title>
+
+        <!-- Style Sheet-->
+        <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{/css/responsive.css}">
+        <link rel="stylesheet" th:href="@{/css/flexslider.css}">
+
+        <!-- favicon 网页的logo -->
+        <link rel="shortcut icon" th:href="@{/images/favicon.png}">
+
+        <!--[if lt IE 9]-->
+        <!--<script th:src="@{/js/html5shiv.js}"></script>-->
+        <link rel="stylesheet" th:href="@{/css/ie.css}">
+        <!--[endif]-->
+    </div>
+</head>
+
+<body>
+<!--head top-->
+<!-- HEADER TOP header应用 -->
+<div id="head_top">
+    <div id="top"></div>
+    <div class="header-one">
+        <div class="headertop-wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="span5 clearfix">
+                        <div class="lang pull-right">
+                            <span>选择一种语言:<a href="#">中文</a></span>
+                        </div>
+                    </div>
+                    <div class="span4 srch">
+                        <form>
+                            <input type="submit" value="">
+                            <input type="text" name="search" placeholder="查询">
+                        </form>
+                    </div>
+                    <div class="span3">
+                        <div class="social-nav">
+                            <a href="#" class="facebook "></a>
+                            <a href="#" class="twitter"></a>
+                            <a href="#" class="google"></a>
+                            <a href="#" class="rss"></a>
+                        </div>
+                        <a href="#" class="sign-in" id="login-link">登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER -->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+
+                <!-- Logo -->
+                <div class="span4">
+                    <div class="logo"> <!--138x96-->
+                        <a th:href="@{/hello/index.html}"><img th:src="@{/images/company/logo.jpg}" alt="Logo"></a>
+                    </div>
+                </div>
+                <!-- Logo -->
+
+                <!--top Menu -->
+                <div class="span8">
+                    <div class="top-menu">
+                        <ul>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="#">新闻</a></li>
+                            <li><a href="#">娱乐</a></li>
+                            <li><a href="#">媒体</a></li>
+                            <li><a href="#" class="last">帮助</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--top Menu -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--导航条-->
+<div id="nav">
+    <nav>
+        <ul>
+            <li>
+                <a href="/html/index">主页 </a>
+                <ul class="clearfix">
+                    <li><a href="/html/index2">风格 2</a></li>
+                    <li><a href="/html/index3">风格 3 </a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="travel_grid.html">旅行</a>
+                <ul class="clearfix">
+                    <li><a href="travel_grid.html">Travel Grid</a></li>
+                    <li><a href="travel_list.html">Travel list</a></li>
+                    <li><a href="travel_detail.html">Travel Detail</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">假期</a>
+            </li>
+            <li>
+                <a href="#">Flights</a>
+                <ul class="clearfix">
+                    <li><a href="#">Camera</a></li>
+                    <li><a href="#">Notebook </a></li>
+                    <li><a href="#">Tablet </a></li>
+                    <li><a href="#">Television </a></li>
+                    <li><a href="#">Smart Phone </a></li>
+                    <li><a href="#">Projection </a></li>
+                </ul>
+            </li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">Vacations</a></li>
+            <li><a href="#">Guide Book</a></li>
+            <li><a href="#">Hot Deal</a></li>
+            <li>
+                <a href="booking.html">预订</a>
+                <ul class="clearfix">
+                    <li><a href="confirm.html">火车</a></li>
+                    <li><a href="confirm.html">酒店</a></li>
+                    <li><a href="confirm.html">飞机</a></li>
+                    <li><a href="confirm.html">景点</a></li>
+                </ul>
+            </li>
+            <li class="last"><a href="contact.html">联系</a></li>
+        </ul>
+    </nav>
+
+    <!--这是响应式的列表-->
+    <div class="responsive_nav">
+        <ul>
+            <li class="open">
+                <a href="#">HOME</a>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Hotels</a></li>
+                    <li><a href="#">Holidays</a></li>
+                    <li><a href="#">Flights</a></li>
+                    <li><a href="#">Camera</a></li>
+                    <li><a href="#">Notebook </a></li>
+                    <li><a href="#">Tablet </a></li>
+                    <li><a href="#">Television </a></li>
+                    <li><a href="#">Smart Phone </a></li>
+                    <li><a href="#">Projection </a></li>
+                    <li><a href="#">Cars</a></li>
+                    <li><a href="#">Vacations</a></li>
+                    <li><a href="#">Guide Book</a></li>
+                    <li><a href="#">Hot Deal</a></li>
+                    <li><a href="#">Cruise</a></li>
+                    <li class="last"><a href="#">Promotion</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--买票-->
+<div id="accordion">
+    <!--飞机-->
+    <h3><span class="flight">飞机</span> <a href="#"></a></h3>
+    <div class="detail">
+        <form action="/flight/find" method="post">
+            <div class="location clearfix">
+                <div class="pull-left">
+                    <label>出发地</label>
+                    <input type="text" name="startingCity" placeholder="长沙">
+                </div>
+                <div class="pull-right">
+                    <label class="dst">目的地</label>
+                    <input type="text" name="terminusCity" placeholder="张家界">
+                </div>
+            </div>
+            <div class="location clearfix">
+                <div>
+                    <div>
+                        <label>出发日期</label>
+                        <input type="date" name="startDate" style="width:410px;"
+                               th:value="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd')}">
+                        <!--th:value="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd')}"-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="search">
+                <input type="submit" name="search" value="搜索">
+            </div>
+        </form>
+    </div>
+    <!--酒店-->
+    <h3><span class="hotel">酒店</span> <a href="#"></a></h3>
+    <div class="detail">
+        <form action="/hotel/find" method="post">
+            <div class="location clearfix">
+                <div class="pull-left">
+                    <label>输入居住的位置</label>
+                    <input type="text" name="hotelAddress" placeholder="长沙">
+                </div>
+                <div class="pull-right">
+                    <label class="dst">酒店星级</label>
+                    <input type="text" name="terminusCity" placeholder="1">
+                </div>
+            </div>
+            <div class="location clearfix">
+                <div>
+                    <div>
+                        <label>关键字</label>
+                        <input type="text" name="hotelName" placeholder="名字" style="width:410px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="search">
+                <input type="submit" name="search" value="搜索">
+            </div>
+        </form>
+    </div>
+    <!--汽车-->
+    <h3><span class="car">汽车</span> <a href="#"></a></h3>
+    <div class="detail">
+        <form action="/car/test" method="post">
+            <div class="location clearfix">
+                <div class="pull-left">
+                    <label>出发地</label>
+                    <input type="text" name="startLocal" placeholder="长沙">
+                </div>
+                <div class="pull-right">
+                    <label class="dst">目的地</label>
+                    <input type="text" name="endLocal" placeholder="张家界">
+                </div>
+            </div>
+            <div>
+                <label>出发日期</label>
+                <input type="date" name="startDate" style="width:410px;"
+                       th:value="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd')}">
+            </div>
+            <div class="search">
+                <input type="submit" name="search" value="搜索">
+            </div>
+        </form>
+    </div>
+    <!--假期-->
+    <!--<h3> <span class="vacation">假期</span> <a href="#"></a></h3>-->
+    <!--<div class="detail">-->
+    <!--<form action="#" method="post">-->
+    <!--<div class="trip">-->
+    <!--<input type="radio" name="trip" value="Round-trip"><span>Roud-Trip</span>-->
+    <!--<input type="radio" name="trip" value="onw-way"><span>One-way</span>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+</div>
+
+<!--背景景点设计-->
+<ul id="background" class="slides">
+    <li>
+        <img th:src="@{/images/scenic/changchen.jpg}" alt="长城">
+        <div class="detail-one">
+            <h3>长城</h3>
+            <h2>世界八大奇迹之一</h2>
+            <span>$ 2.400</span>
+            <a href="#"></a>
+        </div>
+    </li>
+    <li>
+        <img th:src="@{/images/scenic/lijiang.jpg}" alt="丽江">
+        <div class="detail-one">
+            <h3>丽江</h3>
+            <h2>中国美人窝</h2>
+            <span>$ 1.400</span>
+            <a href="#"></a>
+        </div>
+    </li>
+</ul>
+
+<!--热门推荐-->
+<div id="Recommend" class="specialoffer-wrapper">
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="row">
+            <div class="span12">
+                <div class="heading">
+                    <h2>热门 <span>推荐</span></h2>
+                </div>
+            </div>
+        </div>
+        <!-- Heading -->
+
+        <div class="row offer-sec">
+            <ul class="elastislide-list clearfix" id="carousel">
+                <li class="span3">
+                    <div class="offer">
+                        <figure>
+                            <img th:src="@{/images/images/scenic_ZJJ.jpg}" src="/images/images/scenic_ZJJ.jpg"
+                                 alt="天门山照片">
+                            <div class="overlay">
+                                <!--这是收藏的功能-->
+                                <a href="/user/like" class="like"></a>
+                            </div>
+                        </figure>
+                        <article>
+                            <h3>天门山</h3>
+                            <h4>张家界</h4>
+                            <p><a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </p>
+                        </article>
+                        <div class="price">
+                            <h3>138$</h3>
+                            <!--打开该地方的其他景点的排列-->
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="span3">
+                    <div class="offer">
+                        <figure>
+                            <img th:src="@{/images/images/scenic_FH.jpg}" src="/images/images/scenic_FH.jpg" alt="凤凰古城">
+                            <div class="overlay">
+                                <!--这是收藏的功能-->
+                                <a href="#" class="like"></a>
+                            </div>
+                        </figure>
+                        <article>
+                            <h3>凤凰古城</h3>
+                            <h4>湘西</h4>
+                            <p>
+                                <a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </p>
+
+                        </article>
+                        <div class="price">
+                            <h3>138$</h3>
+                            <!--打开该地方的其他景点的排列-->
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="span3">
+                    <div class="offer">
+                        <figure>
+                            <img th:src="@{/images/images/scenic_HS.jpg}" src="/images/images/scenic_HS.jpg" alt="衡山">
+                            <div class="overlay">
+                                <!--这是收藏的功能-->
+                                <a href="#" class="like"></a>
+                            </div>
+                        </figure>
+                        <article>
+                            <h3>邵阳</h3>
+                            <h4>衡山</h4>
+                            <p><a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </p>
+
+                        </article>
+                        <div class="price">
+                            <h3>138$</h3>
+                            <!--打开该地方的其他景点的排列-->
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="span3">
+                    <div class="offer">
+                        <figure>
+                            <img th:src="@{/images/images/scenic_BZ.jpg}" src="/images/images/scenic_BZ.jpg" alt="郴州">
+                            <div class="overlay">
+                                <!--这是收藏的功能-->
+                                <a href="#" class="like"></a>
+                            </div>
+                        </figure>
+                        <article>
+                            <h3>郴州</h3>
+                            <h4>奥特湖</h4>
+                            <p><a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </p>
+
+                        </article>
+                        <div class="price">
+                            <h3>138$</h3>
+                            <!--打开该地方的其他景点的排列-->
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="span3">
+                    <div class="offer">
+                        <figure>
+                            <img th:src="@{/images/images/scenic_CS.jpg}" src="/images/images/scenic_CS.jpg" alt="橘子洲头">
+                            <div class="overlay">
+                                <!--这是收藏的功能-->
+                                <a href="#" class="like"></a>
+                            </div>
+                        </figure>
+                        <article>
+                            <h3>长沙</h3>
+                            <h4>橘子洲头</h4>
+                            <p><a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#" class="active"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </p>
+
+                        </article>
+                        <div class="price">
+                            <h3>138$</h3>
+                            <!--打开该地方的其他景点的排列-->
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="crousal-btn">
+                <a href="#" class="prev"></a>
+                <a href="#" class="next" style="right: -35px;"></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- script -->
+<div id="script">
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{/js/jquery.flexslider.js}"></script>
+    <script th:src="@{/js/jquery.flexslider-min.js}"></script>
+    <script th:src="@{/js/jquery.elastislide.js}"></script>
+    <script th:src="@{/js/jquery.carouFredSel-6.0.4-packed.js}"></script>
+    <script th:src="@{/js/jcarousellite_1.0.1.js}"></script>
+    <script th:src="@{/js/jquery.zweatherfeed.js}"></script>
+    <script th:src="@{/js/jquery.simpleWeather-2.3.min.js}"></script>
+    <script th:src="@{/js/jquery.cycle.all.js}"></script>
+    <script th:src="@{/js/jquery-ui.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.isotope.min.js}"></script>
+    <script th:src="@{/js/jquery.tinyscrollbar.min.js}"></script>
+    <script>
+        function goToByScroll(id) {
+            $ = jQuery;
+            $('html,body').animate({scrollTop: $("#" + id).offset().top}, 3000);
+        }
+    </script>
+    <!--<script type="text/javascript">-->
+    <!--$(document).ready(function(){-->
+    <!--$('.scrollbar1').tinyscrollbar();-->
+    <!--});-->
+    <!--</script>-->
+    <script th:src="@{/js/custom.js}"></script>
+</div>
+</body>
+</html>

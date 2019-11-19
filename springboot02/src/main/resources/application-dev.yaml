@@ -1,0 +1,56 @@
+#tomcat
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+#spring
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.15.47.74:3306/hua?serverTimezone=GMT%2b8
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+    messages:
+      encoding: UTF-8
+  thymeleaf:
+    prefix: classpath:/templates/
+    #      check-template-location: true
+    suffix:  .html
+
+#mybatis
+mybatis:
+  type-aliases-package: com.liu.pojo
+  mapper-locations: classpath:mapper/*Mapper.xml
+    #mapper-locations:
+  #classpath: mapper/*mapper.xml
+
+
+#showSql
+logging:
+  level:
+    com:
+      liu:
+        mapper: debug
+#pagehelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count==countSql
+  page-size-zero: true
+
+#shiro
+shiro:
+  web:
+    enabled: true #打开shiro
+

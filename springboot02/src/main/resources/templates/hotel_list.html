@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--导入base.html的样式资源-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<div class="yddiv1">
+    <table id="filter_table_tab" width="954" border="0" cellspacing="0" cellpadding="0" style="background-color: #FFF;">
+        <tr class="filer_tr">
+            <td width="100" align="right">
+                <div class="depart_add">出发时间：</div>
+            </td>
+            <td width="35" class="isbuxian">
+                <div class="buxian schedule_buxian buxian_time" onclick="filter(this)">不限</div>
+            </td>
+            <td width="194">
+                <input id="lc" name="timeBucket" type="checkbox" value="凌晨" onclick="filter(this)">
+                <label for="lc">凌晨（00:00-06:00）</label>
+            </td>
+            <td width="194">
+                <input id="sw" name="timeBucket" type="checkbox" value="上午" onclick="filter(this)">
+                <label for="sw">上午（06:00-12:00）</label>
+            </td>
+            <td width="194">
+                <input id="xw" name="timeBucket" type="checkbox" value="下午" onclick="filter(this)">
+                <label for="xw">下午（12:00-18:00）</label>
+            </td>
+            <td width="194">
+                <input id="ws" name="timeBucket" type="checkbox" value="晚上" onclick="filter(this)">
+                <label for="ws">晚上（18:00-00:00）</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="sf_addTd1" align="right">
+                <div class="sf_addDiv1">发&nbsp;&nbsp;车&nbsp;&nbsp;站：
+                </div>
+            </td>
+            <td width="57">
+                <div class="buxian schedule_buxian buxian_station" onclick="filter(this)">不限</div>
+            </td>
+            <td colspan="3" id="stationorgname">
+
+                <div class="sf_addDiv2">
+                    <input id="_901120000002625" name="stationorg" type="checkbox" value="901120000002625"
+                           onclick="filter()">
+                    <label for="_901120000002625">四惠站</label>
+                </div>
+
+                <div class="sf_addDiv2">
+                    <input id="_901120000002620" name="stationorg" type="checkbox" value="901120000002620"
+                           onclick="filter()">
+                    <label for="_901120000002620">六里桥站</label>
+                </div>
+
+            </td>
+            <!-- <td>
+                <div class="filter_btn" onclick="isShowFilterTab()">收起筛选<i class="up"></i></div>
+            </td> -->
+        </tr>
+        <!-- <tr class="green">
+             <td></td>
+            <td>
+                <input id="_all" name="isSell" type="radio" value="0" checked="checked" onclick="filter(this)">
+                <label for="_all">所有班次</label>
+            </td>
+            <td colspan="2">
+                <input id="_sell" name="isSell" type="radio" value="1" onclick="filter(this)">
+                <label for="_sell">可购班次</label>
+            </td>
+            <td colspan="5">
+                <div class="filter_btn" onclick="isShowFilterTab()">收起筛选<i class="up"></i></div>
+            </td>
+        </tr> -->
+    </table>
+    <!-- <div id="filter_table_div" class="filter_btn_open">
+        <div class="filter_btn" onclick="isShowFilterTab()">展开筛选<i class="down"></i></div>
+    </div> -->
+</div>
+<div class="yddiv2">
+
+    <div id="script">
+        <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+        <script th:src="@{/js/jquery-ui.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+    </div>
+</body>
+</html>

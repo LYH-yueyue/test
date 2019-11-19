@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--导入base.html的样式资源-->
+    <div th:replace="base :: #base"></div>
+</head>
+<body>
+<!--导入head top -->
+<div th:replace="base :: #head_top"></div>
+<!-- 主要的目录 -->
+<div class="nav-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <!--引用导航条-->
+                <div th:replace="base :: #nav"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Slider 酒店，火车，飞机，汽车票的购买功能 -->
+<div class="flexslider">
+    <!--背景景点设计-->
+    <div th:replace="base :: #background"></div>
+    <!--买票-->
+    <div th:replace="base :: #accordion"></div>
+</div>
+<!-- Slider -->
+
+<!-- 导入热门推荐 -->
+<div th:replace="base :: #Recommend"></div>
+
+<!--登录-->
+<div id="sign" class="login-popup-wrapper">
+    <div id="login-popup">
+        <h2>请登录</h2>
+        <form method="post" th:action="@{/user/login}">
+            <input type="text" name="username" id="username" placeholder="账号"/>
+            <input type="password" name="password" id="password" placeholder="密码"/>
+            <input type="submit" value="登录" id="login-button"/>
+        </form>
+        <a href="#" class="close">Close</a>
+    </div>
+</div>
+
+<!-- Scripts 导入js的样式 -->
+<div th:replace="base :: #script"></div>
+</body>
+</html>
